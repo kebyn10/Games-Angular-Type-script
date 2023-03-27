@@ -8,5 +8,9 @@ CREATE TABLE games(
     image VARCHAR(200),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
+CREATE TABLE users(
+    email varchar(70) PRIMARY KEY,
+    name varchar(50),
+    surname varchar(50),
+    pass varchar(30));
 DESCRIBE games;

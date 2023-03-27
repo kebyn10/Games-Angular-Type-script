@@ -12,6 +12,8 @@ class UsersRoutes{
         this.router.post('/',usersControllers.insertUser)
         this.router.delete('/:email',usersControllers.deleteUser)
         this.router.put('/:email',usersControllers.updateUser)
+        this.router.post('/login',usersControllers.loginUser)
+
     }
 
 

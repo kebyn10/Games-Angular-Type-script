@@ -83,6 +83,29 @@ class UsersControllers {
             }
         });
     }
+    loginUser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const { email, pass } = req.body;
+                const [result] = yield database_1.default.query('SELECT pass from users WHERE email=?', [email]);
+                if (result.length > 0) {
+                    const password = result[0].pass;
+                    if (password == pass) {
+                        res.json('loged');
+                    }
+                    else {
+                        res.json('passWrong');
+                    }
+                }
+                else {
+                    res.json('not found');
+                }
+            }
+            catch (error) {
+                console.log(error);
+            }
+        });
+    }
 }
 const usersControllers = new UsersControllers();
 exports.default = usersControllers;

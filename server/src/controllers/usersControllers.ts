@@ -63,6 +63,27 @@ public async updateUser(req:Request,res:Response):Promise<void>{
         
     }
 }
+public async loginUser(req:Request,res:Response):Promise<void>{
+    try {
+
+        
+        const {email,pass}=req.body
+        const [result]:any=await pool.query('SELECT pass from users WHERE email=?',[email])
+        if (result.length>0) {
+            const password=result[0].pass
+            if (password==pass) {
+                res.json('loged')
+            }else{
+                res.json('passWrong')
+            }
+        }else{
+            res.json('not found')
+        }
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
 
 }
 
